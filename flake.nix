@@ -4,7 +4,7 @@
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
   outputs = { self, flake-utils, nixpkgs }:
-    flake-utils.lib.eachSystem ["x86_64-linux"  "aarch64-darwin" ] (system:
+    flake-utils.lib.eachSystem ["x86_64-linux" ] (system:
       { packages =
         { hello-garnix =
             let pkgs = nixpkgs.legacyPackages.${system};
@@ -24,7 +24,7 @@
                 checkPhase = ''
                   echo "Looking around to see if anything is amiss.."
                   OUTPUT=$(./an-executable)
-                  if [ "$OUTPUT" != "Hello rom an executable!" ]; then
+                  if [ "$OUTPUT" != "Hello from an executable!" ]; then
                     echo "Test failed!"
                     exit 1
                   fi
