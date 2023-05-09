@@ -16,7 +16,7 @@ jobs:
             extra-trusted-public-keys = cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=
       - run: |
           # This will timeout when flake is not built on Garnix
-          nix build --no-update-lock-file --offline --print-build-logs --print-out-paths .#defaultPackage.x86_64-linux
+          nix build --no-update-lock-file --offline --print-build-logs --print-out-paths .packages.*.hello-garnix
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
